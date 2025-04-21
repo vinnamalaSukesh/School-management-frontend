@@ -43,6 +43,9 @@ function Admin() {
     const fetch = async()=>{
     try{
       const token = localStorage.getItem('token')
+      if (!token) {
+        navigate('/')
+      }
       const res = await axios.post(`${BACKEND_URL}/admin-verify`,{token})
       if(res.status === 200){
         setTeachers(res.data.teachers)

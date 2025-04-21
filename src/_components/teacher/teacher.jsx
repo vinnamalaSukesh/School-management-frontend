@@ -26,6 +26,9 @@ function Teacher() {
   useEffect(()=>{
     const verify = async()=>{
       const token = localStorage.getItem('token')
+      if(!token){
+        navigate('/')
+      }
       const res = await axios.post(`${BACKEND_URL}/teacher/verify`,{token})
       if(res.status === 200){
         setSections(res.data.sections)
