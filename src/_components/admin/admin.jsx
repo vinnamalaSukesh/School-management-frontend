@@ -9,13 +9,13 @@ import Section from "./section"
 import { useTheme } from "@/components/ui/theme-provider"
 import { Moon, Sun } from "lucide-react"
 import Announcements from "./Announcements"
-import Classes from "./classes"
 import Class from "./Class"
 import Students from "./Students"
 import Student from "./Student"
 import axios from "axios"
 import store from "@/store/data"
 import Subject from "./Subject"
+import Classes from "./Classes"
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function Admin() {
