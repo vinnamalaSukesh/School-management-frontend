@@ -10,6 +10,7 @@ import Classes from "./Classes"
 import MarkSheet from "./markSheets"
 import Attendance from "./Attendance"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function Teacher() {
@@ -20,6 +21,7 @@ function Teacher() {
   const [curView,setCurView] = useState('home')
   const {theme,setTheme} = useTheme()
   const [teacher,setTeacher] = useState()
+  const navigate = useNavigate()
 
   useEffect(()=>{
     const verify = async()=>{
@@ -39,6 +41,11 @@ function Teacher() {
     }
     verify()
   },[])
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('role')
+    navigate('/')
+  }
   return (
     <div className="h-screen dark:bg-gray-950 dark:text-white transition-colors duration-300">
       <div className="h-[10vh] w-full shadow flex items-center fixed z-10 bg-white dark:bg-zinc-900 px-4 transition-colors duration-300">
@@ -73,7 +80,7 @@ function Teacher() {
             Theme {theme === 'dark' ? <Sun className="w-[24px] h-[24px] text-yellow-500" /> : <Moon className="w-[24px] h-[24px] text-gray-800" />}
           </button>
 
-          <button className="px-4 py-2 mt-1 rounded bg-red-100 text-red-700 hover:bg-red-600 hover:text-white transition dark:bg-red-900 dark:text-white dark:hover:bg-red-700">Logout</button>
+          <button className="px-4 py-2 mt-1 rounded bg-red-100 text-red-700 hover:bg-red-600 hover:text-white transition dark:bg-red-900 dark:text-white dark:hover:bg-red-700" onClick={handleLogout}>Logout</button>
         </div>
       )}
     </div>

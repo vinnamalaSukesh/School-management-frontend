@@ -17,6 +17,7 @@ import store from "@/store/data"
 import Subject from "./Subject"
 import Classes from "./Classes"
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+import { useNavigate } from "react-router-dom"
 
 function Admin() {
   const [curView, setCurView] = useState('home')
@@ -25,12 +26,18 @@ function Admin() {
   const [sect, setSect] = useState(null)
   const { theme, setTheme } = useTheme()
   const { setTeachers, setStudents, setSubjects , setAnnouncements, setClasses, setLogined, logined, setSections } = store((state)=>state)
+  const navigate = useNavigate()
 
   const handleChange = (changeTo) => {
     setCurView(changeTo)
     if (changeTo === 'home' || changeTo === 'teachers') {
       setSect(null)
     }
+  }
+  const handleLogout = ()=>{
+    localStorage.removeItem('token')
+    localStorage.removeItem('role')
+    navigate('/')
   }
   useEffect(()=>{
     const fetch = async()=>{
@@ -98,7 +105,7 @@ function Admin() {
               Theme {theme === 'dark' ? <Sun className="w-[24px] h-[24px] text-yellow-500" /> : <Moon className="w-[24px] h-[24px] text-gray-800" />}
             </button>
 
-            <button className="px-4 py-2 mt-1 rounded bg-red-100 text-red-700 hover:bg-red-600 hover:text-white transition dark:bg-red-900 dark:text-white dark:hover:bg-red-700">Logout</button>
+            <button className="px-4 py-2 mt-1 rounded bg-red-100 text-red-700 hover:bg-red-600 hover:text-white transition dark:bg-red-900 dark:text-white dark:hover:bg-red-700" onClick={handleLogout}>Logout</button>
           </div>
         )}
       </div>
