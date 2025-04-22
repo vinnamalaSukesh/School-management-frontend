@@ -161,7 +161,7 @@ function Section({ sect, leftBar }) {
       <div className="w-full p-4 text-center text-red-600 bg-red-50 dark:bg-red-900 dark:text-red-200 rounded-lg">
         Section data not found for "{section}"
       </div>
-    );
+    )
   }
   return (
     <div className={`${leftBar ? 'w-[65%] sm:w-[70%] lg:w-[75%]':'w-[95%]'} mx-auto right-5 absolute px-6 py-2 bg-gray-50 dark:bg-zinc-900 transition-colors rounded-md border dark:border-zinc-800`}>

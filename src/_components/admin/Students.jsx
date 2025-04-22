@@ -1,9 +1,10 @@
 import store from "@/store/data"
 import { faEye } from "@fortawesome/fontawesome-free-regular"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import Student from "./Student"
 import { useState } from "react"
 import axios from "axios"
+import Lottie from "lottie-react"
+import student from './lottieStudent.json'
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function StudentPop({ studentPop, setStudentPop }) {
@@ -81,10 +82,13 @@ function Students({leftBar}) {
   const {students,classes,sections} = store((state)=> state)
   const [studentPop, setStudentPop] = useState(null)
   return (
-    <div className={`absolute right-0 min-h-[90vh] pt-8 px-4 sm:px-10 transition-all duration-300 flex flex-col items-start ${leftBar ? 'w-[75%]' : 'w-full'} bg-gray-50 dark:bg-zinc-900`}>
+    <div className={`absolute right-0 min-h-[90vh] px-4 sm:px-10 transition-all duration-300 flex flex-col items-start ${leftBar ? 'w-[75%]' : 'w-full'} bg-gray-50 dark:bg-zinc-900`}>
+      <div className="flex items-center justify-center gap-10  relative top-[-20px]">
+        <h2 className="text-2xl font-bold text-gray-700 dark:text-white mb-6 px-2 ">All Students</h2>
+        <div className="w-[150px] h-[150px] "><Lottie animationData={student} loop={true} /></div>
+      </div>
 
-      <h2 className="text-2xl font-bold text-gray-700 dark:text-white mb-6 px-2 ">All Students</h2>
-      <div className="w-full flex items-center justify-around px-4 py-3 text-sm font-semibold text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-zinc-700 rounded-t-lg shadow">
+      <div className="w-full flex items-center justify-around px-4 py-1 text-sm font-semibold text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-zinc-700 rounded-t-lg shadow">
         <p className="md:w-[20%] text-center w-[35%]">Name</p>
         <p className="w-[20%] text-center hidden lg:block">Phone</p>
         <p className="w-[25%] text-center hidden xl:block">Email</p>

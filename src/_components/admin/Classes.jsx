@@ -9,21 +9,26 @@ import Section from "./nestedSection";
 import { useState } from "react";
 import AddClass from "./AddClass";
 import AddSection from "./AddSection";
+import Lottie from "lottie-react";
+import Class from './lottieClass.json'
 
 function Classes({ leftBar }) {
   const { classes,sections } = store((state) => state)
   const [addClass,setAddClass] = useState(false)
   const [addSection,setAddSection] = useState(null)
   return (
-    <div className={`${leftBar ? "w-[75%]" : "w-full"} absolute right-0 top-[10vh] h-[90vh] overflow-y-auto px-6 py-4 bg-gray-50 dark:bg-zinc-900 transition-colors duration-300`}>
-      <button onClick={()=>setAddClass(true)} className="flex items-center gap-2 px-4 py-2 rounded-md bg-emerald-600 text-white hover:bg-emerald-700 active:scale-95 transition-all shadow-md hover:shadow-lg font-medium mx-auto mb-5">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-        </svg>
-        Add Class
-      </button>
+    <div className={`${leftBar ? "w-[75%]" : "w-full"} absolute right-0 top-[10vh] h-[90vh] overflow-y-auto px-6 bg-gray-50 dark:bg-zinc-900 transition-colors duration-300`}>
+      <div className="flex items-center justify-center gap-10  relative top-[-40px]">
+        <button onClick={()=>setAddClass(true)} className="flex items-center gap-2 px-4 py-2 rounded-md bg-emerald-600 text-white hover:bg-emerald-700 active:scale-95 transition-all shadow-md hover:shadow-lg font-medium ">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+          </svg>
+          Add Class
+        </button>
+        <div className="w-[200px] h-[200px] "><Lottie animationData={Class} loop={true} /></div>
+      </div>
 
-      <Accordion type="single" collapsible className="w-full space-y-6">
+      <Accordion type="single" collapsible className="w-full space-y-6 relative top-[-60px]">
         {Object.keys(classes).map((year) => (
           <AccordionItem value={year} key={year} className="rounded-xl border border-gray-300 dark:border-zinc-700 shadow-sm bg-white dark:bg-zinc-800">
             <AccordionTrigger className="px-6 py-4 hover:no-underline">
