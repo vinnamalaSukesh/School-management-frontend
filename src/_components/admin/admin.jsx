@@ -43,8 +43,9 @@ function Admin() {
     const fetch = async()=>{
     try{
       const token = localStorage.getItem('token')
-      if (!token) {
+      if (token == null) {
         navigate('/')
+        return
       }
       const res = await axios.post(`${BACKEND_URL}/admin-verify`,{token})
       if(res.status === 200){
@@ -55,6 +56,11 @@ function Admin() {
         setLogined(res.data.admin)
         setSections(res.data.sections)
         setSubjects(res.data.subjects)
+      }
+      else if (res.status === 400) {
+        localStorage.removeItem('token')
+        navigate('/')
+        return
       }
     }
     catch(err){alert(err)}

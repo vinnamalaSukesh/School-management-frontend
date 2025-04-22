@@ -60,6 +60,7 @@ function AddClass({ setAddClass }) {
             if (res.status === 200) {
                 addClass(res.data.class)
                 addSections(res.data.sections)
+                console.log(res.data.sections)
                 setAddClass(false)
             }
         } catch (err) {

@@ -1,6 +1,5 @@
 import store from "@/store/data"
-import { Accordion, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { AccordionContent } from "@radix-ui/react-accordion";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 import { faEye } from "@fortawesome/fontawesome-free-regular";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
@@ -115,8 +114,8 @@ function ClassTeacherPopUp({ classTeacherPop,setClassTeacherPop }) {
             <div className="bg-white dark:bg-zinc-900 text-gray-800 dark:text-white rounded-xl shadow-xl p-6 w-[90%] max-w-md">
                 <div className="space-y-4">
                     <div className="flex flex-col items-center text-center space-y-1">
-                        <p className="text-xl font-semibold">{Class.name}</p>
-                        <p className="text-md">{classTeacherPop.name} section</p>
+                        <p className="text-xl font-semibold">{Class?.name}</p>
+                        <p className="text-md">{classTeacherPop?.name} section</p>
                     </div>
 
                     <div className="flex flex-col gap-2" >
@@ -158,7 +157,7 @@ function Section({ sect }) {
             <div className="w-full p-4 text-center text-red-600 bg-red-50 dark:bg-red-900 dark:text-red-200 rounded-lg">
                 Section data not found for "{sect.section}" in "{sect.year}"
             </div>
-        );
+        )
     }
     return (
         <div className={`"w-full"} relative px-6 py-4 bg-gray-50 dark:bg-zinc-900 transition-colors duration-300`}>
@@ -170,10 +169,11 @@ function Section({ sect }) {
                     </p>
                 </div>
 
+                {section &&
                 <button className="inline-block px-6 py-4 rounded-xl bg-white dark:bg-zinc-700 shadow-md dark:shadow-lg border border-gray-200 dark:border-zinc-600" onClick={()=>setClassTeacherPop(section)}>
                     <p className="text-sm tracking-wide text-gray-600 dark:text-gray-400 mb-1 uppercase">Class Teacher</p>
                     <p className="text-lg font-bold text-gray-900 dark:text-white">{teachers[section.classTeacher]?.name || "Not Assigned"}</p>
-                </button>
+                </button>}
             </div>
 
             <Accordion type="single" collapsible className="w-full">

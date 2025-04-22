@@ -102,7 +102,9 @@ const store = create((set) => ({
 
     setSections : (Sections)=>set({sections : Sections}),
     updateSection : (Section)=>set((state)=>({sections : {...state.sections,[Section._id]:Section}})),
-    addSections : (Sections) =>
-        set((state)=> ({sections : {...state.sections,...Sections}})),
+    addSections: (newSections) =>
+        set((state) => ({
+            sections: {...state.sections,...newSections},
+        }))
 }))
 export default store

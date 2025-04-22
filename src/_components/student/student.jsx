@@ -25,6 +25,7 @@ function Teacher() {
       const token = localStorage.getItem('token')
       if (!token) {
         navigate('/')
+        return
       }
       const res = await axios.post(`${BACKEND_URL}/student/verify`, { token })
       if (res.status === 200) {
@@ -35,6 +36,11 @@ function Teacher() {
         setSubjects(res.data.subjects)
         setClasses(res.data.class)
         setSections(res.data.section)
+      }
+      else if (res.status === 400) {
+        localStorage.removeItem('token')
+        navigate('/')
+        return
       }
     }
     verify()
