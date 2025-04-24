@@ -29,7 +29,7 @@ function Teachers({ leftBar }) {
       </div>
 
       {Object.keys(teachers).map((id) => (
-        <div key={id} className="flex items-center justify-around w-full sm:p-3 p-2 m-1 sm:my-2 rounded-md bg-white dark:bg-zinc-800 text-black dark:text-white shadow hover:shadow-md transition-all duration-200">
+        <div key={id} className="flex items-center justify-around w-full sm:p-3 p-2 m-1 relative top-[-60px] rounded-md bg-white dark:bg-zinc-800 text-black dark:text-white shadow hover:shadow-md transition-all duration-200">
           <p className="text-center w-[90%] sm:w-[25%]">{teachers[id]?.name}</p>
           <p className="text-center sm:block hidden w-[25%]">{teachers[id]?.phone}</p>
           <p className="hidden lg:block text-center w-[25%]">{teachers[id]?.email}</p>

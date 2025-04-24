@@ -39,9 +39,6 @@ function Classes({ leftBar }) {
 
             <AccordionContent className="bg-gray-50 dark:bg-zinc-800 px-3 sm:px-6 py-4 rounded-b-xl">
               <Accordion type="single" collapsible className="space-y-4">
-                <div className="w-full flex items-center justify-center">
-                  <button className=" p-2 rounded-sm bg-zinc-300 font-semibold dark:bg-zinc-700 dark:text-white" onClick={()=>setAddSection(year)}>Add section</button>
-                </div>
 
                 {classes[year].sections.map((sect) => (
                   <AccordionItem key={sect} value={sect} className="rounded-md border border-gray-200 dark:border-zinc-700">

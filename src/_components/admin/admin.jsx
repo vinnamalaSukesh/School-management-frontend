@@ -57,19 +57,21 @@ function Admin() {
         setSections(res.data.sections)
         setSubjects(res.data.subjects)
       }
-      else if (res.status === 400) {
+    }
+    catch(err){
+      if (err.response?.status === 400) {
         localStorage.removeItem('token')
         navigate('/')
         return
       }
+      else {alert(err)}
     }
-    catch(err){alert(err)}
     }
     fetch()
   },[])
   return (
     <div className="h-screen dark:bg-gray-950 dark:text-white transition-colors duration-300">
-      <div className="h-[10vh] w-full shadow flex items-center fixed z-10 bg-white dark:bg-zinc-900 px-4 transition-colors duration-300">
+      <div className="h-[10vh] w-full shadow flex items-center fixed z-12 bg-white dark:bg-zinc-900 px-4 transition-colors duration-300">
         <button onClick={() => setLeftBar(!leftBar)}>
           <FontAwesomeIcon icon={faBars} className="text-xl p-2 transition hover:shadow dark:hover:shadow-white" />
         </button>

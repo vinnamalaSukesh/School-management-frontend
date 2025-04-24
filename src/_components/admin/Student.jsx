@@ -5,12 +5,12 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function Student({ studentPop, setStudentPop }) {
   const { updateStudent, updateSection, deleteStudent, classes, sections, students } = store((state) => state)
-  const student = students[studentPop.student]
-  const [name, setName] = useState(student.uname)
-  const [phone, setPhone] = useState(student.phone)
-  const [email, setEmail] = useState(student.email)
+  const student = students[studentPop?.student]
+  const [name, setName] = useState(student?.uname)
+  const [phone, setPhone] = useState(student?.phone)
+  const [email, setEmail] = useState(student?.email)
   const [sect, setSect] = useState(student?.section)
-  const [std, setStd] = useState(classes[sections[sect]?.className]._id)
+  const [std, setStd] = useState(classes[sections[sect]?.className]?._id)
 
   const handleChange = (classId) => {
     setStd(classId)
@@ -20,14 +20,14 @@ function Student({ studentPop, setStudentPop }) {
   const handleSave = async () => {
     try {
       if (sect === student.section) {
-        const res = await axios.post(`${BACKEND_URL}/student/update`, { id: student._id, name, phone, email })
+        const res = await axios.post(`${BACKEND_URL}/student/update`, { id: student?._id, name, phone, email })
         if (res.status === 200) {
           updateStudent(res.data.student)
           setStudentPop(false)
         }
       }
       else {
-        const res = await axios.post(`${BACKEND_URL}/student/upgrade`, { id: student._id, name, phone, email, sect })
+        const res = await axios.post(`${BACKEND_URL}/student/upgrade`, { id: student?._id, name, phone, email, sect })
         if (res.status === 200) {
           updateStudent(res.data.student)
           updateSection(res.data.section1)
