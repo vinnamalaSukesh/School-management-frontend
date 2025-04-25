@@ -1,14 +1,14 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @tailwind utilities;
-.GreatVibes {font-family: 'Great Vibes';}
+
 @custom-variant dark (&:is(.dark *));
 @layer utilities {
-  .scrollbar-hidden::-webkit-scrollbar {
+  .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
 
-  .scrollbar-hidden {
+  .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }

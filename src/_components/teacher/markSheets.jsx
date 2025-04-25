@@ -68,7 +68,7 @@ function MarkSheet({ leftBar }) {
                                 <p className="w-[15%] text-center  ">Annual</p>
                             </div>
                             {subject.students.map((id)=> <Marks key={id} id={id} setData={setData} subject={subject.subject} section={subject.section}/>)}
-                            <div className="w-full flex items-center justify-center"><button className="dark:bg-blue-300 bg-blue-800 dark:text-black p-2 px-10 rounded-sm mx-auto m-2" onClick={()=>handleSave({section : subject.section,subject : subject.subject})}>SAVE</button></div>
+                            <div className="w-full flex items-center justify-center"><button className="dark:bg-blue-300 bg-blue-800 dark:text-black text-white p-2 px-10 rounded-sm mx-auto m-2" onClick={()=>handleSave({section : subject.section,subject : subject.subject})}>SAVE</button></div>
                         </AccordionContent>
                     </AccordionItem>
                 ))}
