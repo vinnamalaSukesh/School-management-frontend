@@ -63,13 +63,11 @@ function Admin() {
       setSect(null)
     }
   }
-
   const handleLogout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('role')
     navigate('/')
   }
-
   useEffect(() => {
     const fetch = async () => {
       try {
@@ -100,9 +98,8 @@ function Admin() {
     }
     fetch()
   }, [])
-
   return (
-    <div className={`h-screen transition-colors duration-300 overflow-hidden ${theme === 'dark' ? 'dark bg-gray-950 text-white' : 'bg-white text-gray-900'}`}>
+    <div className={`h-screen transition-colors duration-300 overflow-hidden ${theme === 'dark' ? 'dark bg-gray-950 text-white' : 'bg-gray-50 text-gray-900'}`}>
       <div className={`h-[10vh] w-full shadow flex items-center fixed z-[100] px-4 transition-colors duration-300 top-0 left-0 ${theme === 'dark' ? 'bg-zinc-900' : 'bg-white'}`}>
         <button onClick={() => setLeftBar(!leftBar)} className="z-[110] md:z-auto sidebar-toggle">
           <FontAwesomeIcon icon={faBars} className={`text-xl p-2 transition ${theme === 'dark' ? 'hover:shadow-white' : 'hover:shadow-gray-600'}`}/>

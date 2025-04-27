@@ -68,7 +68,7 @@ function Announcements({ leftBar }) {
     const { announcements } = store((state) => state)
     const [pop,setPop] = useState(null)
     return (
-        <div className={`absolute right-0 min-h-[90vh] px-4 sm:px-8 transition-all duration-300 flex items-start justify-center ${leftBar ? 'w-[75%]' : 'w-full'} bg-gray-50 dark:bg-zinc-900`}>
+        <div className={`absolute right-0 min-h-[90vh] top-[12vh] px-4 sm:px-8 transition-all duration-300 flex items-start justify-center ${leftBar ? 'w-[75%]' : 'w-full'} dark:bg-zinc-900`}>
             <div className="w-full max-w-4xl bg-white dark:bg-zinc-800 rounded-2xl shadow-2xl p-3 sm:p-5 pt-0">
                 <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition mx-auto" onClick={()=>setAddAnnouncement(true)}><BellPlus className="w-10 h-10" />New Announcement</button>
                 <div className="flex items-center justify-center mb-8 relative">
